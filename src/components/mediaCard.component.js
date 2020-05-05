@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 
@@ -7,29 +7,56 @@ import React from 'react';
 
 
 var divStyle = {
-    border: "1px solid black",
-    margin: "1em",
     display: "flex",
-    alignItems: "center",
     flexDirection: "column",
+    alignItems: "center",
     overflowWrap: "break-word",
     wordBreak: "break-all",
-    hyphens: "auto"
+    hyphens: "auto",
+    width: "90%",
+    margin: "5rem auto"
+
 };
+
+var redditNameStyle = {
+    width: "100%",
+    height: "auto",
+    backgroundColor: "gray",
+}
+
 
 var imgStyle = {
     width: "100%",
     height: "auto",
-    imageResolution:"0.1dpi"
+    backgroundColor: "white",
 };
+
+var redditPermalink = {
+    width: "100%",
+    backgroundColor: "white",
+    height: "auto"
+}
 
 function MediaCard(props) {
 
+
+    useEffect(() => {
+        console.log(props.title);
+    });
+
     return (
     <div style={divStyle}>
-        <h3>{props.reddit_name}</h3>
-        <img style={imgStyle} src={props.thumbnail_img} alt="Smiley face"></img>
-        <a href={`https://www.reddit.com${props.hyperlink}`}>Link to post.</a>
+        <div style={redditNameStyle}>
+            <p>{props.body}</p>
+        </div>
+        <div style={imgStyle}>
+            <img style={imgStyle} src={props.thumbnail_img} alt="Smiley face"></img>
+        </div>
+        <div style={redditPermalink}>
+            <a href={`https://www.reddit.com/${props.reddit_name}`}>{props.reddit_name}</a>
+            <br/>
+            <a href={`https://www.reddit.com${props.hyperlink}`}>Link to post.</a>
+        </div>
     </div>
     );
 }
