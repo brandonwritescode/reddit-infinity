@@ -1,4 +1,5 @@
 {
+  "proxy": "https://www.reddit.com",
   "name": "reddit-infinity",
   "version": "0.1.0",
   "private": true,
