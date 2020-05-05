@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import MediaCard from './mediaCard.component';
 
 
+import NavigationBar from "./navigation.component.js";
 
 var contentAreaStyle = {
     width: "50%",
-    backgroundColor: "black"
 };
 
 
@@ -21,7 +21,7 @@ function ContentArea() {
     const [redditMediaItems, setredditMediaItems] = useState([]);
 
     function getRedditMediaItems() {
-        customFetchFunction("/r/randnsfw/hot.json?limit=50", (response) => {
+        customFetchFunction("/r/wallpapers/random.json?limit=50", (response) => {
             setredditMediaItems(response.data.children.filter(child => child.data.post_hint === "image"))
         })
     }
@@ -36,6 +36,8 @@ function ContentArea() {
 
 
     return (
+        <>
+        <NavigationBar />
         <div style={contentAreaStyle}>
             {redditMediaItems.map((mediaItem) => {
                 return < MediaCard 
@@ -45,7 +47,8 @@ function ContentArea() {
                             body={mediaItem.data.title}
                             hyperlink={mediaItem.data.permalink}/>
             })}
-        </div>
+        </div> 
+        </>
     );
 }
     

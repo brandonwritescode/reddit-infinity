@@ -4,6 +4,7 @@ import './App.css';
 
 import ContentArea from './components/contentArea.component.js';
 
+import PromotionItem from "./components/promotionItem.component.js";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         </a> */}
       < ContentArea />
       </header>
+      <PromotionItem />
     </div>
   );
 }
